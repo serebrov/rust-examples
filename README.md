@@ -11,3 +11,4 @@ Each subfolder contains usage examples for the appropriate language feature:
 - [05_conditionals_and_loops/](./05_conditionals_and_loops/src/main.rs) - if/else conditionals and loops
 - [06_ownership/](./06_ownership/src/main.rs) - ownership rules and references
 - [07_slices/](./07_slices/src/main.rs) - string and array slices
+- [08_structs/](./08_structs/src/main.rs) - structures
