@@ -45,20 +45,13 @@ fn main() {
 
         println!("You guessed: {}", guess);
 
-        // match construct is similar to switch case,
-        // the below code can be written as this:
+        // The match construct is similar to the switch operator in C.
         //
-        // // `cmp` returns the Order enum
-        // Order result = guess.cmp(&secret_number)
+        // `guess.cmp` returns the Order enum, we could do
+        //     Order result = guess.cmp(&secret_number)
+        //     match result { ... }
         //
-        // // now we match the result against patterns
-        // match result {
-        //     // pattern => code to run
-        //     Order::Less => ...,
-        //     // the rules inside "match" called "arms"
-        //     Order::Greater => ...,
-        // }
-        //
+        // So here we match the Enum instance against a set of patterns:
         match guess.cmp(&secret_number) {
             Ordering::Less => println!("Too small!"),
             Ordering::Greater => println!("Too big!"),
