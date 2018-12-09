@@ -1,3 +1,5 @@
+.PHONY: new run hello_world
+
 # Create new application: `make new myapp`
 new:
 	cargo new $(NEW_ARGS)
@@ -5,6 +7,10 @@ new:
 # Run the example: `make run 01_hello_cargo`
 run:
 	cd $(RUN_ARGS) && cargo run $(RUN_ARGS)
+
+# This example doesn't use cargo
+hello_world:
+	cd 01_hello_world && rustc main.rs && ./main
 
 # After installation, also add the following into the shell profile
 # export PATH="$HOME/.cargo/bin:$PATH"
