@@ -12,3 +12,4 @@ Each subfolder contains usage examples for the appropriate language feature:
 - [06_ownership/](./06_ownership/src/main.rs) - ownership rules and references
 - [07_slices/](./07_slices/src/main.rs) - string and array slices
 - [08_structs/](./08_structs/src/main.rs) - structures
+- [09_enums/](./09_enums/src/main.rs) - structures
