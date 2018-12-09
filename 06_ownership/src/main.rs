@@ -65,9 +65,38 @@ fn main() {
     let s = takes_and_gives_back(s);
     println!("s is back: {}", s);
 
+    // We can pass the variable by reference to avoid onwnership
+    // transfer, the mutalbe reference (`&mut`) allows the function
+    // to modify the value.
     let mut s = String::from("Hello");
     change(&mut s);
     println!("s: {}", s);
+
+    // We can only have one mutable reference at the same time
+    // to avoid the data races, when the same variable is modified
+    // by two parts of code, and one of the modifications overwrites
+    // another one.
+    // This won't work:
+    //
+    //    let mut s = String::from("hello");
+    //    let r1 = &mut s;
+    //    let r2 = &mut s;
+    //    println!("{}, {}", r1, r2);
+    //
+    // Rust also don't allow dangling references, like here:
+    //
+    //    fn dangle() -> &String { // dangle returns a reference to a String
+    //        let s = String::from("hello"); // s is a new String
+    //        &s // we return a reference to the String, s
+    //    } // Here, s goes out of scope, and is dropped. Its memory goes away.
+    //      // Danger!
+    //
+    // This will raise an error.
+    //
+    // The references rules:
+    // - At any given time, you can have either (but not both of) 
+    //   one mutable reference or any number of immutable references.  
+    // - References must always be valid.
 }
 
 fn takes_ownership(string: String) {
