@@ -4,7 +4,7 @@
 new:
 	cargo new $(NEW_ARGS)
 
-# Run the example: `make run 01_hello_cargo`
+# Run the example: `make run 02_hello_cargo`
 # `cargo run` builds and runs the application.
 # `cargo build` to just build, 
 # `cargo build --release` to build the release version.
