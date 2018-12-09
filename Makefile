@@ -6,7 +6,17 @@ new:
 run:
 	cd $(RUN_ARGS) && cargo run $(RUN_ARGS)
 
-# Utils.
+# After installation, also add the following into the shell profile
+# export PATH="$HOME/.cargo/bin:$PATH"
+rust-install:
+	curl https://sh.rustup.rs -sSf > rustup.sh
+	chmod +x rustup.sh
+	./rustup.sh
+
+rust-update:
+	rustup update
+
+# Utils
 #
 # Handle "run" parameters, see https://stackoverflow.com/questions/2214575.
 # If the first argument is "run"...
