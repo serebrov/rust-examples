@@ -5,6 +5,9 @@ new:
 	cargo new $(NEW_ARGS)
 
 # Run the example: `make run 01_hello_cargo`
+# `cargo run` builds and runs the application.
+# `cargo build` to just build, 
+# `cargo build --release` to build the release version.
 run:
 	cd $(RUN_ARGS) && cargo run $(RUN_ARGS)
 
