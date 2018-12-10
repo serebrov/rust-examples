@@ -13,3 +13,4 @@ Each subfolder contains usage examples for the appropriate language feature:
 - [07_slices/](./07_slices/src/main.rs) - string and array slices
 - [08_structs/](./08_structs/src/main.rs) - structures
 - [09_enums/](./09_enums/src/main.rs) - enums, match
+- [10_vector/](./10_vector/src/main.rs) - vectors
