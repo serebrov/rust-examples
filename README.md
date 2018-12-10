@@ -15,3 +15,4 @@ Each subfolder contains usage examples for the appropriate language feature:
 - [09_enums/](./09_enums/src/main.rs) - enums, match
 - [10_vector/](./10_vector/src/main.rs) - vectors
 - [11_string/](./11_string/src/main.rs) - strings
+- [12_hashmap/](./12_hashmap/src/main.rs) - hashmaps
