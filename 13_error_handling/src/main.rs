@@ -45,6 +45,7 @@ fn main() {
     //
     // So here, even if the `get_payment_id` inside the `handler2` fails,
     // we will still proceed and save the transaction.
+    //
     // The developer could just forget to write the `Err` handler or doubt
     // if the error is possible, in which case it can be returned and what
     // to do with it, so just left out the handler.
@@ -56,6 +57,28 @@ fn main() {
     // that this is not possible - if the `get_payment_id` raised the exception
     // and we didn't handle it, the app would terminate and the transaction
     // would be rolled back (implicitly, as we didn't commit it).
+    //
+    // Anyway, Rust does a lot to prevent such errors, so it is quite hard
+    // to ignore the error unintentionally.
+}
+
+fn panic() {
+    // Unrecoverable Errors with `panic!` macro.
+    // When the panic! macro executes, the program prints a failure message,
+    // unwinds and cleans up the stack, and then quits.
+    //
+    // This most commonly occurs when a bug of some kind has been detected
+    // and (or) it’s not clear to the programmer how to handle the error.
+    panic!("crash and burn");
+
+    // The output:
+    //    Compiling panic v0.1.0 (file:///projects/panic)
+    //     Finished dev [unoptimized + debuginfo] target(s) in 0.25 secs
+    //      Running `target/debug/panic`
+    // thread 'main' panicked at 'crash and burn', src/main.rs:2:4
+    // note: Run with `RUST_BACKTRACE=1` for a backtrace.
+
+    // To get the stacktrace, run (as suggested) `RUST_BACKTRACE=1 cargo run`.
 }
 
 fn recoverable_errors() {
@@ -135,21 +158,12 @@ fn read_username_from_file() -> Result<String, io::Error> {
     }
 }
 
-fn panic() {
-    // Unrecoverable Errors with `panic!` macro.
-    // When the panic! macro executes, the program prints a failure message,
-    // unwinds and cleans up the stack, and then quits.
-    //
-    // This most commonly occurs when a bug of some kind has been detected
-    // and (or) it’s not clear to the programmer how to handle the error.
-    panic!("crash and burn");
-
-    // The output:
-    //    Compiling panic v0.1.0 (file:///projects/panic)
-    //     Finished dev [unoptimized + debuginfo] target(s) in 0.25 secs
-    //      Running `target/debug/panic`
-    // thread 'main' panicked at 'crash and burn', src/main.rs:2:4
-    // note: Run with `RUST_BACKTRACE=1` for a backtrace.
-
-    // To get the stacktrace, run (as suggested) `RUST_BACKTRACE=1 cargo run`.
+// The error propagating boilerplate can be reduced with the '?' operator:
+fn read_username_from_file_short() -> Result<String, io::Error> {
+    // The `?` operator will return the error if it happens or
+    // we will continue with the value associated with Ok variant.
+    let mut f = File::open("hello.txt")?;
+    let mut s = String::new();
+    f.read_to_string(&mut s)?;
+    Ok(s)
 }
