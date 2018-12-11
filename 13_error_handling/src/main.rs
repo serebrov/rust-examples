@@ -13,6 +13,25 @@ fn main() {
     if let Ok(value) = result {
         println!("Username: {}", value);
     }
+
+    // Note: the situation becomes somewhat more complex if the
+    // function wants to propagate more than one error type,
+    // for example:
+    //
+    //     fn read_data_from_file() -> Result<String, io::Error> {
+    //        // For example, we read some data from the text file and
+    //        // parse it, we can propagate io::Error from here, 
+    //        // but can't propagate another error, for example ParseIntError
+    //     }
+    //
+    //  There are several solutions to that, like wrapping errors into
+    //  each other or introducing own error types, see: 
+    //
+    //  - https://doc.rust-lang.org/rust-by-example/error/multiple_error_types.html
+    //  - http://brson.github.io/2016/11/30/starting-with-error-chain
+    //  - https://docs.rs/error-chain/0.12.0/error_chain/
+    //  - http://stevedonovan.github.io/rust-gentle-intro/6-error-handling.html
+
     // Note: while Result<T, E> concept is much safer than error codes
     // that are used in C or callback(error, result) approach in
     // JavaScript, it is still possible to ignore / miss the fact
@@ -162,6 +181,12 @@ fn read_username_from_file() -> Result<String, io::Error> {
 fn read_username_from_file_short() -> Result<String, io::Error> {
     // The `?` operator will return the error if it happens or
     // we will continue with the value associated with Ok variant.
+    //
+    // Question: would it be possible (and would it be good) if Rust
+    // had the "transparent" implementation for "?" - where we would
+    // just write the code without any additional operators and the
+    // error would be automatically propagated if the function return
+    // type allows that?
     let mut f = File::open("hello.txt")?;
     let mut s = String::new();
     f.read_to_string(&mut s)?;
