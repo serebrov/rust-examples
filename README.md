@@ -17,3 +17,19 @@ Each subfolder contains usage examples for the appropriate language feature:
 - [11_string/](./11_string/src/main.rs) - strings
 - [12_hashmap/](./12_hashmap/src/main.rs) - hashmaps
 - [13_error_handling/](./13_error_handling/src/main.rs) - hashmaps
+
+Resources:
+
+- [The Rust Programming Language](https://doc.rust-lang.org/book/foreword.html)
+- [Rust By Example](https://doc.rust-lang.org/rust-by-example/index.html)
+- [The Rustonomicon](https://doc.rust-lang.org/nomicon/index.html)
+- [A Gentle Introduction to Rust](http://stevedonovan.github.io/rust-gentle-intro/)
+
+On error handling:
+
+- [The Grass is Always Greener - My Struggles with Rust](https://compileandrun.com/struggles-with-rust.html),[Hacker news discussion](https://news.ycombinator.com/item?id=14284734)
+- [Error Handling in Rust](https://blog.burntsushi.net/rust-error-handling/), [hacker news discussion](https://news.ycombinator.com/item?id=9545647)
+- [Error chain crate](https://docs.rs/error-chain/0.12.0/error_chain/)
+- [On Error Handling in Rust](http://lucumr.pocoo.org/2014/10/16/on-error-handling/), [hacker news discussion](https://news.ycombinator.com/item?id=8467772)
+- [Rust and the Blub Paradox](http://www.jonathanturner.org/2016/01/rust-and-blub-paradox.html)
+- [Starting a new Rust project right, with error-chain](http://brson.github.io/2016/11/30/starting-with-error-chain)
