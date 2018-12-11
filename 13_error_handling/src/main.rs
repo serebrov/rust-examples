@@ -5,7 +5,10 @@ use std::io::ErrorKind;
 
 
 fn main() {
+    // How to interrupt the program with panic macro.
     // panic();
+
+    // How to deal with recoverable errors.
     // recoverable_errors();
 
     // Error propagation:

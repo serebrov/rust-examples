@@ -16,7 +16,7 @@ Each subfolder contains usage examples for the appropriate language feature:
 - [10_vector/](./10_vector/src/main.rs) - vectors
 - [11_string/](./11_string/src/main.rs) - strings
 - [12_hashmap/](./12_hashmap/src/main.rs) - hashmaps
-- [13_error_handling/](./13_error_handling/src/main.rs) - hashmaps
+- [13_error_handling/](./13_error_handling/src/main.rs) - error handling, mostly comments
 
 Resources:
 
