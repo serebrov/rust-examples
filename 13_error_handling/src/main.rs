@@ -28,60 +28,21 @@ fn main() {
     //     }
     //
     //  There are several solutions to that, like wrapping errors into
-    //  each other or introducing own error types, see: 
+    //  each other or introducing own error types, see:
     //
     //  - https://doc.rust-lang.org/rust-by-example/error/multiple_error_types.html
     //  - http://brson.github.io/2016/11/30/starting-with-error-chain
     //  - https://docs.rs/error-chain/0.12.0/error_chain/
     //  - http://stevedonovan.github.io/rust-gentle-intro/6-error-handling.html
+    //  Note: the error chain crate seems to be [depreciated](https://github.com/rust-lang-nursery/failure/issues/181) in favor of the [`failure` crate](https://rust-lang-nursery.github.io/failure/).
 
     // Note: while Result<T, E> concept is much safer than error codes
     // that are used in C or callback(error, result) approach in
     // JavaScript, it is still possible to ignore / miss the fact
     // that the error has happened.
-    // Like here - the file does not exist, so the error has happened,
-    // but we only handle the Ok case and that is a potential problem:
-    // in the real app, the situation like this can lead to wrong or
-    // corrupted data.
-    // In the case of exception, we could guarantee that the error would
-    // either interrupt the application or will be handled by the caller
-    // code.
-    //
-    // For example, we could have something like this:
-    //
-    //     database.startTransaction();
-    //     data = query_some_data();
-    //     handler1(data);
-    //     handler2(data);
-    //     database.commitTransaction();
-    //
-    // The handler2 could be this:
-    //
-    //     fn handler2(data: HashMap) {
-    //        // Send the external request to the payment API
-    //        let payment_id = get_payment_id(data);
-    //        if let Ok(value) = result {
-    //            data.insert("payment_id", value);
-    //        }
-    //     }
-    //
-    // So here, even if the `get_payment_id` inside the `handler2` fails,
-    // we will still proceed and save the transaction.
-    //
-    // The developer could just forget to write the `Err` handler or doubt
-    // if the error is possible, in which case it can be returned and what
-    // to do with it, so just left out the handler.
-    // So it is still a responsibility of the developer to always implement
-    // the Err handling with panic (if there is no better way to handle the
-    // error).
-    //
-    // While in the language with exceptions (C++, python) we could guarantee
-    // that this is not possible - if the `get_payment_id` raised the exception
-    // and we didn't handle it, the app would terminate and the transaction
-    // would be rolled back (implicitly, as we didn't commit it).
-    //
-    // Anyway, Rust does a lot to prevent such errors, so it is quite hard
-    // to ignore the error unintentionally.
+    // Like in the example above - the file does not exist, 
+    // so the error has happened, but we only handle the Ok case 
+    // and ignore the error.
 }
 
 fn panic() {
