@@ -31,6 +31,8 @@ fn main() {
             // io::Result is an enum with Ok and Err variants (enum values)
             // when we call Err.expect(...), the app will crash with specified
             // message if he Err result is returned.
+            // when we call Ok.expect(...), it returns the value in Ok (number
+            // of bytes read in this case).
             .expect("Failed to read line.");
 
         // We already have "guess", but we can "shadow" (redefine) the

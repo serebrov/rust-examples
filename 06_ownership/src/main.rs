@@ -32,6 +32,7 @@ fn main() {
     // after this, the s1 is not valid anymore.
     let s2 = s1;
     // The `println!("{}", s1);` raises an error.
+    // println!("s1: {}", s1);
     println!("s2: {}", s2);
 
     // We can copy the value into the new variable with `clone`:
