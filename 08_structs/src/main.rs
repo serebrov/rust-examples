@@ -13,6 +13,10 @@ impl User {
     fn display_name(&self) -> String {
         self.username.clone()
     }
+
+    fn display_status(&self) -> String {
+        format!("Status: {}, login count: {}", self.active, self.login_count)
+    }
 }
 
 // Constructor-like function with defaults.
@@ -62,6 +66,7 @@ fn main() {
     // and {:#?} outputs the formatted (multi-line) debug representation.
     println!("User: {:#?}", user1);
     println!("User: {:#?}", user1.display_name());
+    println!("User: {:#?}", user1.display_status());
 
     // Create using constructor-like function:
     let user2 = build_user(
