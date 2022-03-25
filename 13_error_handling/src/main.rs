@@ -43,6 +43,10 @@ fn main() {
     // Like in the example above - the file does not exist, 
     // so the error has happened, but we only handle the Ok case 
     // and ignore the error.
+    // Note: it was also mentioned in the rust book that `if let` construct
+    // should be used intentionally, when we explicitely want to only handle
+    // one case. The safer way is to use `match` that will force us to check
+    // all the options.
 }
 
 fn panic() {
@@ -151,6 +155,8 @@ fn read_username_from_file_short() -> Result<String, io::Error> {
     // just write the code without any additional operators and the
     // error would be automatically propagated if the function return
     // type allows that?
+    // Probably it would not be good, we should either handle the error
+    // here or express an intention to pass the error to the caller.
     let mut f = File::open("hello.txt")?;
     let mut s = String::new();
     f.read_to_string(&mut s)?;
