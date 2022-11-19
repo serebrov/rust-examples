@@ -9,9 +9,9 @@ use rand::Rng;
 fn main() {
     println!("Guess the number!");
 
-    // Note that we don't specify the variable type explicitly,
+    // We don't specify the variable type explicitly,
     // but the language is strongly typed, the type is derived
-    // from the method return type.
+    // from the method's return type.
     let secret_number = rand::thread_rng().gen_range(1, 101);
     println!("The number: {}", secret_number);
 
